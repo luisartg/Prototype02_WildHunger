@@ -26,11 +26,11 @@ public class DestroyOutOfBounds : MonoBehaviour
     {
         if (axisPosition > topBound)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else if (axisPosition < lowerBound)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

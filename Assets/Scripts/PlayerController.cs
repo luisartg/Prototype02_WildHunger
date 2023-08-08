@@ -102,6 +102,13 @@ public class PlayerController : MonoBehaviour
                 projectilePrefab.transform.rotation.eulerAngles.x,
                 rotationDegrees,
                 projectilePrefab.transform.rotation.eulerAngles.z);
-        Instantiate(projectilePrefab, transform.position, projectileRotation);
+        //Instantiate(projectilePrefab, transform.position, projectileRotation);
+        GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
+        if (pooledProjectile != null)
+        {
+            pooledProjectile.SetActive(true); // activate it
+            pooledProjectile.transform.position = transform.position; // position it at player
+            pooledProjectile.transform.rotation = projectileRotation;
+        }
     }
 }
